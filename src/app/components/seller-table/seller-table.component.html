@@ -1,0 +1,41 @@
+<mat-card>
+    <mat-card-title>Seller List</mat-card-title>
+    <table class="seller-table mat-elevation-z8" mat-table [dataSource]="this.items">
+        <ng-container matColumnDef="sellerName">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let item"> {{item.sellerName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="currency">
+            <th mat-header-cell *matHeaderCellDef>Currencies</th>
+            <td mat-cell *matCellDef="let item"> {{item.currency}} </td>
+        </ng-container>
+        <ng-container matColumnDef="offices">
+            <th mat-header-cell *matHeaderCellDef>Offices</th>
+            <td mat-cell *matCellDef="let item"> {{item.offices}} </td>
+        </ng-container>
+        <ng-container matColumnDef="biddedDeal">
+            <th mat-header-cell *matHeaderCellDef>Bidded Deals</th>
+            <td mat-cell *matCellDef="let item"> {{item.biddedDeal}} </td>
+        </ng-container>
+        <ng-container matColumnDef="guaranteedDeal">
+            <th mat-header-cell *matHeaderCellDef>Guaranteed Deals</th>
+            <td mat-cell *matCellDef="let item"> {{item.guaranteedDeal}} </td>
+        </ng-container>
+        <ng-container matColumnDef="deleteItem">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let item"><button mat-icon-button (click)="deleteItem(item.key)">
+                    <mat-icon matTooltip="Delete this item" matTooltipPosition="before" aria-hidden="false"
+                        aria-label="delete item icon">delete</mat-icon>
+                </button> </td>
+        </ng-container>
+        <ng-container matColumnDef="editItem">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let item"><button mat-icon-button [routerLink]="['/edit', item.key]">
+                    <mat-icon matTooltip="Edit this item" matTooltipPosition="after" aria-hidden="false"
+                        aria-label="edit item icon">edit</mat-icon>
+                </button> </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</mat-card>

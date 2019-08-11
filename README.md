@@ -1,5 +1,12 @@
-# MiniProject
+# Angular/Firebase CRUD Seller Form
 
+## Built with
+* Angular 8
+* [Angular Material](https://material.angular.io/) 
+* [Firebase Realtime Database](https://firebase.google.com/docs/database)
+
+
+![screenshot](./seller-form.png)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
 
 ## Development server

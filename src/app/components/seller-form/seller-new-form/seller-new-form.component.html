@@ -1,0 +1,47 @@
+<mat-card class="form-card">
+  <mat-card-title>Seller Form</mat-card-title>
+  <form [formGroup]="newSellerForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Seller Name (*)" formControlName="sellerName" maxlength="100">
+      <mat-hint>Required Field</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Currencies (*)</mat-label>
+      <mat-select formControlName="currency" multiple>
+        <mat-option *ngFor="let currency of currencyCodes" [value]="currency">{{currency}}</mat-option>
+      </mat-select>
+      <mat-hint>Required Field</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Offices (*)</mat-label>
+      <mat-select formControlName="offices" multiple>
+        <mat-option *ngFor="let country of countryCodes" [value]="country">{{country}}</mat-option>
+      </mat-select>
+      <mat-hint>Required Field</mat-hint>
+    </mat-form-field>
+    <mat-list>
+      <mat-list-item>
+        <mat-hint>Deal Type
+          <mat-error *ngIf="!this.newSellerForm.value.biddedDeal && !this.newSellerForm.value.guaranteedDeal">
+            {{"(One Deal Type Required)"}}</mat-error>
+        </mat-hint>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox formControlName="biddedDeal">Bidded</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox formControlName="guaranteedDeal">Guaranteed</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+    <mat-form-field>
+      <input matInput placeholder="Contact Name" formControlName="contactName" maxlength="100">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email" maxlength="255">
+      <mat-hint>Enter a valid Email Address</mat-hint>
+    </mat-form-field>
+    <button mat-flat-button color="primary" type="submit"
+      [disabled]='(!newSellerForm.valid || (!this.newSellerForm.value.biddedDeal && !this.newSellerForm.value.guaranteedDeal))'>Save</button>
+  </form>
+  <button mat-button (click)="onCancel()">Cancel</button>
+</mat-card>
