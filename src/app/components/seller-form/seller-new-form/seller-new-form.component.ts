@@ -46,7 +46,7 @@ export class SellerNewFormComponent implements OnInit {
       }).catch(err => {
         alert('Error adding the item');
         console.log(err);
-      });;
+      });
     }
     else {
       window.alert('Please correct the form errors');
